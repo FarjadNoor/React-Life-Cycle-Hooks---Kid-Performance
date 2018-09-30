@@ -38,12 +38,18 @@ export default class Kid extends React.Component {
     // this.props.
   }
 
+  componentWillUnmount(){
+    const unmountJudge = true;
+    this.props.unmountJudge(unmountJudge);
+  }
+
   render() {
     const { dressColor} = this.props;
     const { danceSteps, emotion, startedPerforming, currentStepIndex, qualified } = this.state;
     setTimeout(console.log('danceSteps***', danceSteps), 500);
     return (
       <div>
+        <h1>Kid</h1>
         <div>dressColor: {dressColor}</div>
         <div style={{ backgroundColor: dressColor, width: 50, height: 50 }}></div>
         <div>Emotion: {emotion}</div>

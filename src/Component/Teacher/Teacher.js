@@ -13,7 +13,10 @@ export default class Teacher extends React.Component {
  render() {
    
    return (
+     <div>
+       <h1>Teacher</h1>
      <button onClick={this.sendDataToKid.bind(this)}>Get Help From Teacher</button>
+     </div>
    );
  }
 }

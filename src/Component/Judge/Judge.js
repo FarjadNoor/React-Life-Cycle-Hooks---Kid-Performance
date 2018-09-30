@@ -31,6 +31,7 @@ export default class Judge extends React.Component {
 
     return (
       <div>
+       <h1>Judge</h1>
         <button type="button" onClick={this.applaud.bind(this)}>
           Appreciate performance
         </button>

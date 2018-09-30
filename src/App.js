@@ -18,8 +18,12 @@ class App extends Component {
     this.updateEmotion = this.updateEmotion.bind(this);
     this.kidQualified = this.kidQualified.bind(this);
     this.isQualified = this.isQualified.bind(this);
+    this.unmountJudge = this.unmountJudge.bind(this);
 
+  }
 
+  unmountJudge(unmountJudge){
+    this.setState({unmountJudge})
   }
 
   static getDerivedStateFromProps() {
@@ -43,20 +47,20 @@ class App extends Component {
   }
 
   render() {
-    const { volume, furtherSteps, emotion, stars, isQualified } = this.state;
+    const { volume, furtherSteps, emotion, stars, isQualified, unmountJudge } = this.state;
     console.log('volume***', volume);
     console.log('furtherSteps***', furtherSteps)
     return (
       <div>
-        <h1>Kid</h1>
-        {!isQualified && <Kid dressColor='green' furtherSteps={furtherSteps} emotion={emotion} stars={stars} isQualified = {isQualified}/>}
+        
+        {!isQualified && <Kid dressColor='green' furtherSteps={furtherSteps} emotion={emotion} unmountJudge={this.unmountJudge} stars={stars} isQualified = {isQualified}/>}
         <br />
         <hr />
         <br />
         <Teacher updateSteps={this.updateSteps} />
         <br />
         <br />
-        <Judge updateEmotion={this.updateEmotion} kidQualified={this.kidQualified} />
+        {!unmountJudge && <Judge updateEmotion={this.updateEmotion} kidQualified={this.kidQualified} />}
         <br />
         <button onClick={this.isQualified}>Ask the Kid to Leave the Show</button>
       </div>
